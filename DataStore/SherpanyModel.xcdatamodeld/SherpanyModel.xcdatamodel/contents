@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CDAddress" representedClassName=".CDAddress" syncable="YES">
+        <attribute name="city" optional="YES" attributeType="String"/>
+        <attribute name="street" optional="YES" attributeType="String"/>
+        <attribute name="suite" optional="YES" attributeType="String"/>
+        <attribute name="zipcode" optional="YES" attributeType="String"/>
+        <relationship name="geo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDGeo" inverseName="address" inverseEntity="CDGeo"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDUser" inverseName="address" inverseEntity="CDUser"/>
+    </entity>
+    <entity name="CDAlbum" representedClassName=".CDAlbum" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDPhoto" inverseName="album" inverseEntity="CDPhoto"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDUser" inverseName="albums" inverseEntity="CDUser"/>
+    </entity>
+    <entity name="CDCompany" representedClassName=".CDCompany" syncable="YES">
+        <attribute name="bs" optional="YES" attributeType="String"/>
+        <attribute name="catchPhrase" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDUser" inverseName="company" inverseEntity="CDUser"/>
+    </entity>
+    <entity name="CDGeo" representedClassName=".CDGeo" syncable="YES">
+        <attribute name="lat" optional="YES" attributeType="String"/>
+        <attribute name="long" optional="YES" attributeType="String"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDAddress" inverseName="geo" inverseEntity="CDAddress"/>
+    </entity>
+    <entity name="CDPhoto" representedClassName=".CDPhoto" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="thumbnailUrl" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+        <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDAlbum" inverseName="photos" inverseEntity="CDAlbum"/>
+    </entity>
+    <entity name="CDPost" representedClassName=".CDPost" syncable="YES">
+        <attribute name="body" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDUser" inverseName="posts" inverseEntity="CDUser"/>
+    </entity>
+    <entity name="CDUser" representedClassName=".CDUser" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="phone" optional="YES" attributeType="String"/>
+        <attribute name="username" optional="YES" attributeType="String"/>
+        <attribute name="website" optional="YES" attributeType="String"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CDAddress" inverseName="user" inverseEntity="CDAddress"/>
+        <relationship name="albums" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDAlbum" inverseName="user" inverseEntity="CDAlbum"/>
+        <relationship name="company" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CDCompany" inverseName="user" inverseEntity="CDCompany"/>
+        <relationship name="posts" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDPost" inverseName="user" inverseEntity="CDPost"/>
+    </entity>
+    <elements>
+        <element name="CDAddress" positionX="-96.1015625" positionY="-402.41015625" width="128" height="133"/>
+        <element name="CDAlbum" positionX="18.31640625" positionY="-198.98828125" width="128" height="103"/>
+        <element name="CDCompany" positionX="31.41015625" positionY="-85.44140625" width="128" height="103"/>
+        <element name="CDGeo" positionX="131.12890625" positionY="-372.72265625" width="128" height="88"/>
+        <element name="CDPhoto" positionX="211.5546875" positionY="-228.25" width="128" height="118"/>
+        <element name="CDPost" positionX="38.09765625" positionY="33.41796875" width="128" height="103"/>
+        <element name="CDUser" positionX="-312.234375" positionY="-108.89453125" width="128" height="193"/>
+    </elements>
+</model>
